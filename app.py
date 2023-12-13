@@ -11,7 +11,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'static/temp'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-camera_url = 'http://192.168.43.82:8080/shot.jpg'
+
 path = "./static/images/uploaded_image.jpg"
 
 scale = 3
@@ -60,22 +60,6 @@ def detect_dimensions(frame):
     return b''
 
 
-
-def gen():
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
-        frame = cv2.resize(frame, (0, 0), None, 0.5, 0.5)
-        frame_bytes = detect_dimensions(frame)
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n\r\n')
-
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
 @app.route('/upload', methods=['POST'])
 def upload_image():
     print("Here - upload_image")
@@ -104,9 +88,9 @@ def upload_image():
             return send_file(temp_path, mimetype='image/jpeg')
         else:
             print("No dimensions detected")
-            return render_template('index.html', error="No dimensions detected")
+            return render_template('error.html', error="No dimensions detected")
 
-    return render_template('index.html', error="Unexpected error")
+    return render_template('error.html', error="Unexpected error")
 
 
 
