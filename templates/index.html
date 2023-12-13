@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimension Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Dimension Detection</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose an image:</label>
+        <input type="file" name="file" id="file">
+        <button type="submit">Upload Image</button>
+    </form>
+
+
+    {% if image_path %}
+        <h3>Uploaded Image:</h3>
+        <img src="{{ image_path }}" alt="Uploaded Image">
+    {% endif %}
+
+    <!-- Update the image display section -->
+    {% if processed_image_path %}
+    <h3>Processed Image:</h3>
+    <img src="{{ url_for('static', filename='temp/processed_image.jpg') }}" alt="Processed Image">
+    {% endif %}
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fileInput = document.getElementById('file');
+            fileInput.addEventListener('change', () => {
+                fileInput.form.submit();
+            });
+        });
+    </script>
+</body>
+</html>
