@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Size Detection</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Form styling */
+        form {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.02);
+        }
+
+        input[type="submit"]:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer styling */
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload an Image to Detect Object Size</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
+        <input type="submit" value="Upload and Process">
+    </form>
+    <footer>
+        &copy; 2024 Object Size Detection | <a href="#">Privacy Policy</a>
+    </footer>
+</body>
+</html>
